@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio Web Personal</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f3f0f7; /* Fondo lavanda muy suave */
+            color: #2d2a3a; /* Texto oscuro suavizado */
+            line-height: 1.6;
+        }
+
+        /* Menú de navegación */
+        nav {
+            background-color: #1e1b29; /* Morado casi negro */
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 0;
+        }
+
+        nav a {
+            color: #e2dbf0;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px; /* Bordes más redondeados */
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #6d28d9; /* Violeta brillante */
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Encabezado dinámico */
+        header {
+            background: linear-gradient(135deg, #4c1d95, #6d28d9); /* Degradado moderno */
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            box-shadow: inset 0 -10px 20px rgba(0,0,0,0.05);
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #ddd6fe;
+        }
+
+        /* Contenido principal */
+        main {
+            max-width: 850px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background-color: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px; /* Esquinas más suaves */
+            box-shadow: 0 4px 15px rgba(109, 40, 217, 0.05); /* Sombra con tinte morado */
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-3px); /* Efecto sutil de elevación */
+        }
+
+        h2 {
+            color: #4c1d95; /* Violeta oscuro */
+            margin-bottom: 1.2rem;
+            border-bottom: 3px solid #ddd6fe;
+            padding-bottom: 0.4rem;
+            font-size: 1.6rem;
+        }
+
+        /* Rediseño de la sección intereses usando bloques visuales */
+        .grid-intereses {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tarjeta-interes {
+            background-color: #fbfaff;
+            border-left: 4px solid #6d28d9;
+            padding: 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #4c1d95;
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 1.2rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        a {
+            color: #6d28d9;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #4c1d95;
+        }
+
+        /* Estilos estilizados del formulario */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        label {
+            font-weight: 600;
+            color: #4c1d95;
+            font-size: 0.95rem;
+            margin-bottom: -0.5rem;
+        }
+
+        input, textarea {
+            padding: 0.9rem;
+            border: 2px solid #e2dbf0;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: #fdfcff;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #6d28d9;
+            box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.15);
+        }
+
+        button {
+            background-color: #6d28d9;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(109, 40, 217, 0.2);
+        }
+
+        button:hover {
+            background-color: #4c1d95;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px rgba(109, 40, 217, 0.3);
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #1e1b29;
+            color: #a78bfa;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        /* Adaptación para móviles */
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            header {
+                padding: 2.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#intereses">Intereses</a></li>
+            <li><a href="#galeria">Imágenes</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <header id="inicio">
+        <h1>Bienvenidos a mi espacio web</h1>
+        <p>Un diseño renovado con HTML moderno y CSS estilizado</p>
+    </header>
+
+    <main>
+        <section id="sobre-mi">
+            <h2>Sobre mí</h2>
+            <p>Hola, soy un entusiasta en pleno aprendizaje del desarrollo web. Me apasiona descubrir cómo la tecnología puede transformar ideas en experiencias visuales interactivas y funcionales.</p>
+        </section>
+
+        <section id="intereses">
+            <h2>Mis áreas de interés</h2>
+            <!-- Cambiado de una lista simple a una cuadrícula de bloques visuales -->
+            <div class="grid-intereses">
+                <div class="tarjeta-interes">💻 Programación Frontend</div>
+                <div class="tarjeta-interes">📚 Lectura y Documentación</div>
+                <div class="tarjeta-interes">✈️ Viajes y Nuevas Culturas</div>
+                <div class="tarjeta-interes">🎵 Música e Innovación</div>
+            </div>
+        </section>
+
+        <section id="galeria">
+            <h2>Imagen inspiracional</h2>
+            <img src="https://picsum.photos/800/400" alt="none">
+            <p>Esta sección cuenta con una vista limpia y bordes redondeados en la imagen para coincidir con la nueva estética suave de la interfaz.</p>
+        </section>
+
+        <section id="contacto">
+            <h2>Hablemos</h2>
+            <p>Si tienes alguna consulta, sugerencia o simplemente deseas saludar, completa el siguiente formulario:</p>
+            
+            <form>
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" name="asunto" placeholder="¿En qué te puedo ayudar?" required>
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+                <button type="submit">Enviar mensaje</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Documentación útil</h2>
+            <p>Para profundizar conocimientos en tecnologías web, te sugiero explorar <a href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank">MDN Web Docs</a>, el estándar de oro para desarrolladores.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Diseñado con Estilo y Pasión. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
